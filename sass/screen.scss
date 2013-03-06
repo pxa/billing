@@ -1,0 +1,395 @@
+
+
+@import 'main';
+
+
+html {
+	//@include baseline-grid-background;
+	background-color: shade(desaturate($base-color, 20%), 5%);
+	background-color: $interactive-background-color;
+	background-color: $mud;
+	color: #222;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+section {
+	@include border-radius;
+	@include box-shadow(0 0 0 ($default-border-radius * 2) $color-3);
+	background-color: $background-color;
+	border: 1px solid $border-color;
+	margin: rhythm(1) auto;
+	max-width: 30em;
+	min-width: 20em;
+}
+
+.container {
+	padding: 1em;
+}
+
+header {
+	padding: 1em;
+	position: relative;
+	
+	h1 {
+		@include adjust-font-size-to($l, 1);
+		margin: 0;
+	}
+	
+	span {
+		position: absolute;
+		right: 1em;
+		top: 1em;
+	}
+	
+	label {
+		font-size: em($s);
+		margin-right: 0.5em;
+	}
+}
+
+a {
+	color: $crimson;
+}
+
+nav {
+	@extend %inline-list;
+	text-align: center;
+	
+	a {
+		$shade: rgba(black, 0.1);
+		@extend %interactive;
+		border-right-width: 0;
+		line-height: 2;
+		padding: 0 1em;
+		text-decoration: none;
+		
+		&:first-child {
+			@include border-radius(2px 0 0 2px);
+		}
+		
+		&:last-child {
+			@include border-radius(0 2px 2px 0);
+			border-right-width: 1px;
+		}
+		
+		&.active {
+			@extend %selected;
+			
+			& + * {
+				border-left-width: 0;
+			}
+			
+			&:before {
+				display: none;
+			}
+		}
+	}
+	
+	& + nav {
+		//border-bottom: 1px solid $border-color;
+		padding: 1em;
+		
+		a {
+			font-size: em($s);
+			font-weight: bold;
+		}
+	}
+}
+
+h2 {
+	@include adjust-font-size-to($m, 1);
+	margin: 0 0 1rem;
+}
+
+h3 {
+	@include adjust-font-size-to($r, 1);
+	margin: 0 0 0.5rem;
+	text-align: center;
+}
+
+footer {
+	border-top: 1px solid $border-color;
+	padding: 0 1em;
+	
+	a {
+		@include adjust-font-size-to($s, 1.5);
+	}
+}
+
+.activity { // table
+	//margin: 1em 0;
+	width: 100%;
+	
+	tbody {
+		font-size: em($s);
+		line-height: 1.4;
+	}
+	
+	td, th {
+		padding-top: 0.25em;
+		padding-bottom: 0.25em;
+		vertical-align: top;
+	}
+	
+	td, time {
+		white-space: nowrap;
+	}
+	
+	td time {
+		color: $interactive-color;
+	}
+	
+	th {
+		text-align: left;
+		font-weight: normal;
+	}
+	
+	tr:first-child > * {
+		padding-top: 1rem;
+	}
+	
+	tr:last-child > * {
+		padding-bottom: 1rem;
+	}
+	
+	tbody + tbody.group tr:first-child > * {
+		padding-top: 0;
+	}
+	
+	.group tr:first-child { // tbody
+	
+		td {
+			vertical-align: middle;
+		}
+		
+		th {
+			font-size: em($m);
+			font-weight: bold;
+		}
+	}
+	
+	.summary { // tbody
+		border-top: 1px solid $border-color;
+		
+		th {
+			font-weight: bold;
+		}
+	}
+	
+	.due { // tbody
+		background-color: $hightlight-color;
+		border-top: 3px double $border-color;
+		font-size: em($r);
+	}
+}
+
+.money {
+	font-family: monospace;
+	padding-left: 0.5em;
+	padding-right: 1.65em;
+	text-align: right;
+}
+
+.credit {
+	$color: tint(green, 0%);
+	color: $color;
+	padding-right: 1em;
+	
+	&:before, &:after {
+		color: tint($color, 60%);
+	}
+	
+	&:before {
+		content: '($';
+	}
+	
+	&:after {
+		content: ')';
+	}
+}
+
+.debit {
+	$color: shade(red, 20%);
+	color: $color;
+	
+	&:before {
+		content: '$';
+		color: tint($color, 60%);
+	}
+}
+
+.box { // div
+	@include border-radius;
+	background-color: #FFF;
+	border: 1px solid $border-color;
+	padding: 0 1em;
+}
+
+.bottom-padded-box {
+	@extend .box;
+	padding-bottom: 1em;
+	text-align: center;
+}
+
+.payment {
+	text-align: center;
+	
+	a {
+		@extend .btn;
+		font-size: em($m);
+		line-height: 2;
+		padding: 0 1em;
+		margin: 1em 0;
+	}
+}
+
+.faq { // details
+	
+	summary {
+		cursor: pointer;
+		font-size: em($s);
+		font-weight: bold;
+	}
+	
+	> div {
+		@extend .box;
+		max-width: 20em;
+		margin: 0.25em auto;
+	}
+	
+	p {
+		font-size: em($s);
+		line-height: 1.4;
+	}
+}
+
+.payment-options {
+	
+	p, label {
+		font-size: em($s);
+		line-height: 1.4;
+		text-align: left;
+	}
+	
+	label {
+		border-top: 1px solid $border-color;
+		display: block;
+		padding: 1em 0 1em 2em;
+		text-indent: -2em;
+	}
+	
+	input {
+		margin-right: 0.75em;
+	}
+	
+	.container > div {
+		@extend .box;
+		max-width: 20em;
+		margin: 0 auto;
+		padding: 1em;
+		text-align: center;
+		
+		a {
+			@extend .btn;
+			font-size: em($m);
+			line-height: 2;
+			padding: 0 1em;
+		}
+		
+		& + div {
+			margin-top: 1em;
+		}
+	}
+	
+	footer {
+		text-align: right;
+	}
+}
+
+input.money {
+	font-size: em($r);
+	line-height: 2;
+	padding: 0 0.1em;
+	width: 5em;
+}
+
+.statement { // details
+	@include border-radius;
+	background-color: #FFF;
+	border: 1px solid $border-color;
+	
+	summary {
+		@extend %interactive;
+		border-width: 0;
+		font-size: em($r);
+		line-height: 2em;
+		padding: 0.25em 0.25em 0.25em 0.75em;
+		position: relative;
+		
+		span {
+			position: absolute;
+			right: 0;
+		}
+		
+		.money {
+			font-weight: inherit;
+			padding: 0;
+		}
+		
+		a {
+			@extend .btn;
+			margin: 0 0.25em;
+		}
+	}
+	
+	&[open] {
+		@include box-shadow($selected-box-shadow);
+		
+		summary {
+			@extend %selected;
+			border-width: 0 0 1px;
+		}
+	}
+	
+	> div {
+		padding: 0 1em 1em;
+	}
+	
+	& + .statement {
+		margin-top: 0.5em;
+	}
+}
+
+details + h3 {
+	margin-top: 1em;
+}
+
+.date-control {
+	text-align: center;
+	margin-bottom: 1em;
+	
+	> * {
+		line-height: 2;
+		vertical-align: middle;
+	}
+	
+	a {
+		@extend %interactive;
+		@include inline-block;
+		@include border-radius;
+		padding: 0 2em 0 0.5em;
+		position: relative;
+		text-decoration: none;
+		
+		&:after {
+			@include triangle(down, $interactive-color, 0.4em);
+			margin-top: -0.2em;
+			right: 0.5em;
+			top: 50%;
+		}
+	}
+	
+	button {
+		margin-left: 0.5em;
+	}
+}
