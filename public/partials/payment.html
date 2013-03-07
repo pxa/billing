@@ -1,0 +1,39 @@
+<div data-item="payment-options" class="payment-options">
+
+	<div class="container">
+	
+		<h2>Payment Options</h2>
+		
+		<div>
+			<h3>Pay amount due</h3>
+			<p>Pay the <strong>$86.09</strong> amount due from the most recent statement by Feb 10.</p>
+			<a href="#pay">Pay $86.09</a>
+		</div>
+		
+		<div>
+			<h3>Pay real-time balance</h3>
+			<p>Pay the <strong>$286.09</strong> amount due from the most recent statement and the $200.00 in new charges incurred since then; otherwise, the recently incurred charges will appear on the next statement.</p>
+			<a href="#pay">Pay $286.09</a>
+		</div>
+
+		<div id="pay-other">
+			<h3>Pay other amount</h3>
+			<p>Pay any amount, up to <strong>$286.09</strong>. Your account will remain in good standing.</p>
+			<input type="text" class="money" placeholder="$0.00" ng-model="payother" />
+			<a href="#pay" ng-class="{ disabled: !payother }">Pay</a>
+		</div>
+					
+		<div id="pay-defer">
+			<h3>Defer payment</h3>
+			<p>For a fee, you may choose to pay the <strong>$200.00</strong> deferment amount. The remaining balance will defer to your next statement, and your account will remain in good standing.</p>
+			<label><input type="checkbox" ng-model="defer"/> I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
+			<a href="#pay" ng-class="{ disabled: !defer }">Pay $200.00</a>
+		</div>
+	
+	</div>
+	
+	<footer>
+		<a href="#/status" data-toggle="main" data-hide="payment-options">Cancel</a>
+	</footer>
+	
+</div>
