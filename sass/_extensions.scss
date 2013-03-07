@@ -84,3 +84,27 @@
 	padding: 5px;
 	width: 100%;
 }
+
+.tooltip {
+	$tooltip-arrow-size: 1em;
+	$tooltip-background-color: rgba(black, 0.85);
+	@include border-radius;
+	background-color: $tooltip-background-color;
+	color: white;
+	max-width: 20em;
+	padding: 1em;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	
+	&.bottom {
+		margin-top: $tooltip-arrow-size;
+		
+		&:before {
+			@include triangle(up, $tooltip-background-color, $tooltip-arrow-size);
+			left: 50%;
+			margin-left: -$tooltip-arrow-size;
+			top: -$tooltip-arrow-size;
+		}
+	}
+}
