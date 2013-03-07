@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'billingApp.directives', 'ui.compat'])
+angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'billingApp.directives', 'ui.compat', 'ui.bootstrap'])
 
 	.config(['$stateProvider', '$routeProvider', '$urlRouterProvider', function($stateProvider, $routeProvider, $urlRouterProvider) {
 
@@ -17,15 +17,18 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 			})
 			.state('bill.status.summary', {
 				url: '/status',
-				templateUrl: 'partials/bill.status.summary.html'
+				templateUrl: 'partials/bill.status.summary.html',
+				data: { title: 'Summary' }
 			})
 			.state('bill.status.statement', {
 				url: '/statement',
-				templateUrl: 'partials/bill.status.statement.html'
+				templateUrl: 'partials/bill.status.statement.html',
+				data: { title: 'Most Recent Statement' }
 			})
 			.state('bill.status.activity', {
 				url: '/new-activity',
-				templateUrl: 'partials/bill.status.activity.html'
+				templateUrl: 'partials/bill.status.activity.html',
+				data: { title: 'New Activity' }
 			})
 			.state('bill.history', {
 				abstract: true,
@@ -33,25 +36,37 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 			})
 			.state('bill.history.date', {
 				url: '/history',
-				templateUrl: 'partials/bill.history.date.html'
+				templateUrl: 'partials/bill.history.date.html',
+				data: { title: 'Activity by date' }
 			})
 			.state('bill.history.terms', {
 				url: '/terms',
-				templateUrl: 'partials/bill.history.terms.html'
+				templateUrl: 'partials/bill.history.terms.html',
+				data: { title: 'Terms' }
 			})
 			.state('bill.history.statements', {
 				url: '/statements',
-				templateUrl: 'partials/bill.history.statements.html'
+				templateUrl: 'partials/bill.history.statements.html',
+				data: { title: 'Statements' }
 			})
 			.state('payment', {
 				url: '/payment',
-				templateUrl: 'partials/payment.html'
+				templateUrl: 'partials/payment.html',
+				data: { title: 'Payment Options' }
 			});
         
 	}])
 	
-	.run([ '$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
+	.run([ '$rootScope', '$state', '$stateParams', '$filter', function($rootScope, $state, $stateParams, $filter) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
+		
+		$rootScope.title = function(t) {
+			return (t ? t + ' - ' : '') + 'Billing';
+		}
+		
+		$rootScope.dueDate = '2013-04-11';
+		$rootScope.dueDateString = $filter('date')($rootScope.dueDate, 'MMM d');
+
 		$state.transitionTo('bill.status.summary');
 	}]);

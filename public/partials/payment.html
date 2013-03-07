@@ -3,31 +3,37 @@
 	<div class="container">
 	
 		<h2>Payment Options</h2>
+		<h3>Payment due {{dueDateString}}</h3>
 		
-		<div>
+		<div ng-init="amountDue = '$195.09'">
 			<h3>Pay amount due</h3>
-			<p>Pay the <strong>$86.09</strong> amount due from the most recent statement by Feb 10.</p>
-			<a href="#pay">Pay $86.09</a>
+			<p>Pay the <strong>{{amountDue}}</strong> amount due from the most recent statement. This amount accounts for any personal payments since the statement date.</p>
+			<a href="#pay" class="btn">Pay {{amountDue}}</a>
 		</div>
 		
-		<div>
+		<div ng-init="realTimeBalance = '$286.09'">
 			<h3>Pay real-time balance</h3>
-			<p>Pay the <strong>$286.09</strong> amount due from the most recent statement and the $200.00 in new charges incurred since then; otherwise, the recently incurred charges will appear on the next statement.</p>
-			<a href="#pay">Pay $286.09</a>
+			<p>Pay the <strong>{{amountDue}}</strong> amount due from the most recent statement and the <strong>$925.00</strong> in new charges incurred since then; otherwise, the recently incurred charges will appear on the next statement.</p>
+			<a href="#pay" class="btn">Pay $1,120.09</a>
 		</div>
 
-		<div id="pay-other">
-			<h3>Pay other amount</h3>
-			<p>Pay any amount, up to <strong>$286.09</strong>. Your account will remain in good standing.</p>
-			<input type="text" class="money" placeholder="$0.00" ng-model="payother" />
-			<a href="#pay" ng-class="{ disabled: !payother }">Pay</a>
-		</div>
-					
-		<div id="pay-defer">
+		<div ng-init="defermentAmount = '$180.00'">
 			<h3>Defer payment</h3>
-			<p>For a fee, you may choose to pay the <strong>$200.00</strong> deferment amount. The remaining balance will defer to your next statement, and your account will remain in good standing.</p>
-			<label><input type="checkbox" ng-model="defer"/> I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
-			<a href="#pay" ng-class="{ disabled: !defer }">Pay $200.00</a>
+			<p>For a fee, you may choose to pay the deferment amount. The remaining balance will defer to your next statement, and your account will remain in good standing.</p>
+			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="$180.00" /> <strong>$180.00</strong> Select statement deferment amount.</label>
+			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="$200.00" /> <strong>$200.00</strong> Select <a ng-show="false" href="#" data-tooltip-title="Recalculated deferment amount based on account activity since last statement.">recalculated deferment amount</a>
+			<a tooltip="Recalculated deferment amount based on account activity since last statement." tooltip-placement="bottom">recalculated deferment amount</a>.
+			</label>
+			<label class="agreement"><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{defermentAmount}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
+			<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{defermentAmount}}</strong> is due by {{dueDateString}}. Payment may be made electronically below or by mail.</p>
+			<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{defermentAmount}}</a>
+		</div>
+		
+		<div>
+			<h3>Pay other amount</h3>
+			<p>Pay any amount, up to <strong>$1,120.09</strong>. Your account will remain in good standing.</p>
+			<input type="text" class="money" placeholder="$0.00" ng-model="payother" />
+			<a href="#pay" class="btn" ng-class="{ disabled: !payother }">Pay</a>
 		</div>
 	
 	</div>
