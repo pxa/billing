@@ -4,7 +4,6 @@
 
 
 html {
-	//@include baseline-grid-background;
 	background-color: shade(desaturate($base-color, 20%), 5%);
 	background-color: $interactive-background-color;
 	background-color: $mud;
@@ -53,40 +52,30 @@ a {
 
 nav {
 	@extend %inline-list;
+	letter-spacing: inherit;
 	text-align: center;
 	
 	a {
 		$shade: rgba(black, 0.1);
 		@extend %interactive;
-		border-right-width: 0;
 		line-height: 2;
 		padding: 0 1em;
 		text-decoration: none;
 		
 		&:first-child {
-			@include border-radius(2px 0 0 2px);
+			@include border-left-radius;
 		}
 		
 		&:last-child {
-			@include border-radius(0 2px 2px 0);
-			border-right-width: 1px;
+			@include border-right-radius;
 		}
 		
 		&.active {
 			@extend %selected;
-			
-			& + * {
-				border-left-width: 0;
-			}
-			
-			&:before {
-				display: none;
-			}
 		}
 	}
 	
-	& + nav {
-		//border-bottom: 1px solid $border-color;
+	& + div > nav {
 		padding: 1em;
 		
 		a {
