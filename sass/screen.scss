@@ -106,7 +106,6 @@ footer {
 }
 
 .activity { // table
-	//margin: 1em 0;
 	width: 100%;
 	
 	tbody {
@@ -141,34 +140,32 @@ footer {
 		padding-bottom: 1rem;
 	}
 	
-	tbody + tbody.group tr:first-child > * {
+	tbody.group + tbody.group tr:first-child > * {
 		padding-top: 0;
 	}
 	
-	.group tr:first-child { // tbody
+	.group tr:first-child, .summary { // tbody
 	
 		td {
 			vertical-align: middle;
 		}
 		
 		th {
-			font-size: em($m);
 			font-weight: bold;
 		}
 	}
 	
-	.summary { // tbody
+	.summary, .summary + .group { // tbody
 		border-top: 1px solid $border-color;
-		
-		th {
-			font-weight: bold;
-		}
+	}
+	
+	.summary, .due {
+		font-size: em($r);
 	}
 	
 	.due { // tbody
 		background-color: $hightlight-color;
 		border-top: 3px double $border-color;
-		font-size: em($r);
 	}
 }
 
@@ -260,7 +257,7 @@ footer {
 		text-align: left;
 	}
 	
-	label, .agreement {
+	label {
 		border-top: 1px solid $border-color;
 		display: block;
 		padding: 1em 0 1em 2em;
@@ -272,7 +269,7 @@ footer {
 		}
 	}
 	
-	h2 + h3, .agreement + p {
+	h2 + h3, label + p {
 		@include border-radius;
 		background-color: $color-2;
 		margin-top: 0;
@@ -309,6 +306,18 @@ footer {
 	
 	footer {
 		text-align: right;
+	}
+	
+	details {
+		margin-bottom: 1em;
+		
+		summary {
+			text-align: left;
+		}
+		
+		> div {
+			padding-bottom: 1em;
+		}
 	}
 }
 
@@ -398,4 +407,8 @@ details + h3 {
 	button {
 		margin-left: 0.5em;
 	}
+}
+
+time {
+	white-space: nowrap;
 }
