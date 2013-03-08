@@ -1,4 +1,4 @@
-<div data-item="payment-options" class="payment-options">
+<div class="payment-options">
 
 	<div class="container">
 	
@@ -8,25 +8,88 @@
 		<div ng-init="amountDue = '$195.09'">
 			<h3>Pay amount due</h3>
 			<p>Pay the <strong>{{amountDue}}</strong> amount due from the most recent statement. This amount accounts for any personal payments since the statement date.</p>
+			<details class="faq">
+				<summary>How is this calculated?</summary>
+				<div>
+					<table class="activity">
+						<tbody>
+							<tr>
+								<td class="money debit">1,070.09</td>
+								<th scope="row">Statement Balance</th>
+							</tr>
+							<tr>
+								<td class="money credit">375.00</td>
+								<th scope="row">Anticipated Aid</th>
+							</tr>
+							<tr>
+								<td class="money credit">500.00</td>
+								<th scope="row">New Payments</th>
+							</tr>
+						</tbody>
+						<tbody class="summary due">
+							<tr>
+								<td class="money debit">195.09</td>
+								<th scope="row">Amount Due</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</details>
 			<a href="#pay" class="btn">Pay {{amountDue}}</a>
 		</div>
 		
 		<div ng-init="realTimeBalance = '$286.09'">
 			<h3>Pay real-time balance</h3>
 			<p>Pay the <strong>{{amountDue}}</strong> amount due from the most recent statement and the <strong>$925.00</strong> in new charges incurred since then; otherwise, the recently incurred charges will appear on the next statement.</p>
+			<details class="faq">
+				<summary>How is this calculated?</summary>
+				<div>
+					<table class="activity">
+						<tbody>
+							<tr>
+								<td class="money debit">1,070.09</td>
+								<th scope="row">Statement Balance</th>
+							</tr>
+							<tr>
+								<td class="money credit">375.00</td>
+								<th scope="row">Anticipated Aid</th>
+							</tr>
+							<tr>
+								<td class="money debit">550.00</td>
+								<th scope="row">New Charges</th>
+							</tr>
+							<tr>
+								<td class="money credit">500.00</td>
+								<th scope="row">New Payments</th>
+							</tr>
+							<tr>
+								<td class="money debit">375.00</td>
+								<th scope="row">Unfulfilled Anticipated Aid</th>
+							</tr>
+						</tbody>
+						<tbody class="summary due">
+							<tr>
+								<td class="money debit">1,120.09</td>
+								<th scope="row">Real-Time Balance</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</details>
 			<a href="#pay" class="btn">Pay $1,120.09</a>
 		</div>
 
-		<div ng-init="defermentAmount = '$180.00'">
+		<div ng-init="originalDefermentAmount = 180; recalculatedDefermentAmount = 200; defermentAmount = originalDefermentAmount; newPayments = 100">
 			<h3>Defer payment</h3>
 			<p>For a fee, you may choose to pay the deferment amount. The remaining balance will defer to your next statement, and your account will remain in good standing.</p>
-			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="$180.00" /> <strong>$180.00</strong> Select statement deferment amount.</label>
-			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="$200.00" /> <strong>$200.00</strong> Select <a ng-show="false" href="#" data-tooltip-title="Recalculated deferment amount based on account activity since last statement.">recalculated deferment amount</a>
+			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="{{originalDefermentAmount}}" /> <strong>{{originalDefermentAmount | currency}}</strong> Select statement deferment amount.</label>
+			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="{{recalculatedDefermentAmount}}" /> <strong>{{recalculatedDefermentAmount | currency}}</strong> Select <a ng-show="false" href="#" data-tooltip-title="Recalculated deferment amount based on account activity since last statement.">recalculated deferment amount</a>
 			<a tooltip="Recalculated deferment amount based on account activity since last statement." tooltip-placement="bottom">recalculated deferment amount</a>.
 			</label>
-			<label class="agreement"><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{defermentAmount}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
-			<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{defermentAmount}}</strong> is due by {{dueDateString}}. Payment may be made electronically below or by mail.</p>
-			<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{defermentAmount}}</a>
+			<p>Previous payments of <strong>{{newPayments | currency}}</strong> will be applied to your deferment amount.</p>
+			<label><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{defermentAmount | currency}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
+			<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{(defermentAmount - newPayments) | currency}}</strong> is due by <time>{{dueDateString}}</time>. Payment may be made electronically below or by mail.</p>
+			<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{(defermentAmount - newPayments) | currency}}</a>
 		</div>
 		
 		<div>
