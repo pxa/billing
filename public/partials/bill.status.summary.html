@@ -3,59 +3,33 @@
 	<table class="activity">
 		<tbody>
 			<tr>
-				<td class="money">0.00</td>
-				<th scope="row">Previous Balance</th>
-			</tr>
-			<tr>
-				<td class="money debit">3,336.09</td>
-				<th scope="row">Charges</th>
-			</tr>
-			<tr>
-				<td class="money credit">16.00</td>
-				<th scope="row">Adjustments</th>
-			</tr>
-			<tr>
-				<td class="money credit">1,500.00</td>
-				<th scope="row">Payments</th>
-			</tr>
-			<tr>
-				<td class="money credit">750.00</td>
-				<th scope="row">Financial Aid</th>
-			</tr>
-		</tbody>
-		<tbody class="summary">
-			<tr>
 				<td class="money debit">1,070.09</td>
 				<th scope="row">Statement Balance</th>
 			</tr>
 			<tr>
 				<td class="money credit">375.00</td>
-				<th scope="row">Anticipated Aid</th>
+				<th scope="row"><a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom">Anticipated Aid</a></th>
 			</tr>
 		</tbody>
 		<tbody class="summary due">
 			<tr>
 				<td class="money debit">695.09</td>
-				<th scope="row">Amount due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+				<th scope="row">Adjusted balance<br/>due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
 			</tr>
 		</tbody>
 		<tbody>
 			<tr>
-				<td class="money debit">550.00</td>
+				<td class="money debit">{{newCharges}}</td>
 				<th scope="row">New Charges</th>
 			</tr>
 			<tr>
-				<td class="money credit">500.00</td>
+				<td class="money credit">{{newPayments}}</td>
 				<th scope="row">New Payments</th>
-			</tr>
-			<tr>
-				<td class="money debit">375.00</td>
-				<th scope="row">Unfulfilled Anticipated Aid</th>
 			</tr>
 		</tbody>
 		<tbody class="summary due">
 			<tr>
-				<td class="money debit">1,120.09</td>
+				<td class="money debit">{{realTimeBalance}}</td>
 				<th scope="row">Real-Time Balance</th>
 			</tr>
 		</tbody>
@@ -67,9 +41,9 @@
 </div>
 
 <details class="faq">
-	<summary>What if payment is late?</summary>
+	<summary>What if my payment is late?</summary>
 	<div>
-		<p>If the amount due from the most recent statement is not received by <strong>{{dueDateString}}</strong>, a late fee will be charged on the next statement.</p>
-		<p>Late fees charge <strong>1.5% per month</strong>, adjusted for any prior late fees and partial payments.</p>
+		<p>If the amount due is not received by <strong>{{dueDateString}}</strong>, a late payment fee will be charged on the next statement.</p>
+		<p>The late payment fee is <strong>1.5% per month</strong> with a $2 minimum.</p>
 	</div>
 </details>

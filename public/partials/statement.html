@@ -1,5 +1,5 @@
 <summary>
-	<time datetime="2013-03-20">Mar 20</time>
+	<time datetime="2013-03-20">March 20<span ng-show="showYear">, 2013</span></time>
 	<span>
 		<b class="money debit" title="$2,586.09 amount due by Feb 10">695.09</b>
 		<a href="#pdf">PDF</a>
@@ -50,14 +50,14 @@
 				<th scope="rowgroup">Payments</th>
 			</tr>
 			<tr>
-				<td><time datetime="2013-03-15">Mar 15</time></td>
-				<td class="money">1,000.00</td>
-				<th scope="row">Mailed Payment</th>
-			</tr>
-			<tr>
 				<td><time datetime="2013-03-07">Mar 7</time></td>
 				<td class="money">500.00</td>
 				<th scope="row">Online Payment</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-15">Mar 15</time></td>
+				<td class="money">1,000.00</td>
+				<th scope="row">Payment</th>
 			</tr>
 		</tbody>
 		<tbody class="group">

@@ -11,7 +11,7 @@
         
 	</head>
 
-	<body>
+	<body ng-class="{ altCurrency: altCurrencyStyle }">
 
 		<section ng-controller="BillingCtrl">
 		
@@ -19,9 +19,9 @@
 				<h1>Billing</h1>
 				<label ng-show="!$state.includes('payment')">
 					Campus Account:
-					<select>
-						<option>Bloomington</option>
-						<option>IUPUI</option>
+					<select ng-model="campus">
+						<option value="BL">Bloomington</option>
+						<option value="IUPUI">IUPUI</option>
 					</select>
 				</label>
 			</header>
@@ -29,6 +29,13 @@
 			<div ng-view></div>
 
 		</section>
+		
+		<div id="config">
+			<label>
+				<input type="checkbox" ng-model="altCurrencyStyle" />
+				<span class="money credit">100.00</span>
+			</label>
+		</div>
 		
 		<!-- In production use:
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>

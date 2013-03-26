@@ -47,6 +47,29 @@
 	}
 }
 
+// https://github.com/csswizardry/csswizardry-grids/blob/master/csswizardry-grids.scss
+%grid {
+    list-style: none;                /* [1] */
+    margin: 0;                       /* [2] */
+    padding: 0;                      /* [2] */
+    margin-left: 0;           /* [3] */
+    letter-spacing: -0.31em;         /* [4] */
+}
+
+/* Opera hack */
+.opera:-o-prefocus, %grid {
+    word-spacing: -0.43em;
+}
+
+%grid-item {
+	@include inline-block;
+	@include box-sizing(border-box);
+    padding-left: 0;           /* [2] */
+    vertical-align: top;             /* [3] */
+    letter-spacing: normal;          /* [4] */
+    word-spacing: normal;            /* [4] */
+}
+    
 .btn {
 	$color: $violet;
 	$dark: shade($color, 30%);
@@ -91,10 +114,9 @@
 	@include border-radius;
 	background-color: $tooltip-background-color;
 	color: white;
-	max-width: 20em;
+	max-width: 22em;
 	padding: 1em;
 	position: absolute;
-	text-align: center;
 	text-indent: 0;
 	
 	&.bottom {

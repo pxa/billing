@@ -14,7 +14,7 @@ section {
 	@include box-shadow(0 0 0 ($default-border-radius * 2) $color-3);
 	background-color: $background-color;
 	border: 1px solid $border-color;
-	margin: rhythm(1) auto;
+	margin: 1em auto 4em;
 	max-width: 30em;
 	min-width: 20em;
 }
@@ -50,13 +50,17 @@ a {
 	text-decoration: underline;
 }
 
+[tooltip] {
+	cursor: help;
+}
+
 nav {
-	@extend %inline-list;
-	letter-spacing: inherit;
+	@extend %grid;
 	text-align: center;
 	
 	a {
 		$shade: rgba(black, 0.1);
+		@extend %grid-item;
 		@extend %interactive;
 		line-height: 2;
 		padding: 0 1em;
@@ -68,6 +72,10 @@ nav {
 		
 		&:last-child {
 			@include border-right-radius;
+		}
+		
+		+ a, + a.active {
+			border-left-width: 0;
 		}
 		
 		&.active {
@@ -140,6 +148,11 @@ footer {
 		padding-bottom: 1rem;
 	}
 	
+	tbody.summary:first-child {
+		border: 1px solid $border-color;
+		border-width: 0 0 1px;
+	}
+	
 	tbody.group + tbody.group tr:first-child > * {
 		padding-top: 0;
 	}
@@ -201,6 +214,21 @@ footer {
 	&:before {
 		content: '$';
 		color: tint($color, 60%);
+	}
+}
+
+.altCurrency {
+	
+	.credit {
+		padding-right: 1.65em;
+		
+		&:before {
+			content: '\2212$';
+		}
+		
+		&:after {
+			content: none;
+		}
 	}
 }
 
@@ -341,7 +369,7 @@ input.money {
 		padding: 0.25em 0.25em 0.25em 0.75em;
 		position: relative;
 		
-		span {
+		> span {
 			position: absolute;
 			right: 0;
 		}
@@ -411,4 +439,25 @@ details + h3 {
 
 time {
 	white-space: nowrap;
+}
+
+.footnote { // p
+	font-size: em($s);
+	margin-bottom: 0;
+}
+
+#config {
+	@include box-shadow(0 0 0.5em $color-4);
+	background-color: #fff;
+	border-top: 1px solid $border-color;
+	bottom: 0;
+	left: 0;
+	padding: 0.5em;
+	position: fixed;
+	right: 0;
+	opacity: 0;
+	
+	&:hover {
+		opacity: 1;
+	}
 }

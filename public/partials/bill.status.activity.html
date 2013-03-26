@@ -1,6 +1,12 @@
 <h2>New Activity</h2>
 <div class="box">
 	<table class="activity">
+		<tbody class="summary">
+			<tr>
+				<td colspan="2" class="money debit">{{realTimeBalance}}</td>
+				<th scope="row">Real-time balance</th>
+			</tr>
+		</tbody>
 		<tbody>
 			<tr>
 				<td><time datetime="2013-03-30">Mar 30</time></td>
@@ -23,13 +29,15 @@
 			<tr>
 				<td><time datetime="2013-03-22">Mar 22</time></td>
 				<td class="money credit" title="$150.00 credit">150.00</td>
-				<th scope="row">Mailed Payment</th>
+				<th scope="row">Payment</th>
 			</tr>
+		</tbody>
+		<tbody class="summary">
 			<tr>
-				<td><time datetime="2013-03-21">Mar 21</time></td>
-				<td class="money debit" title="$375.00 credit">375.00</td>
-				<th scope="row">Unfulfilled Financial Aid</th>
+				<td colspan="2" class="money debit">{{adjustedBalance}}</td>
+				<th scope="row">Adjusted balance</th>
 			</tr>
 		</tbody>
 	</table>
 </div>
+<p class="footnote">New activity will show on your next statement.</p>
