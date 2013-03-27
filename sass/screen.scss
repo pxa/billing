@@ -98,6 +98,10 @@ h2 {
 	margin: 0 0 1rem;
 }
 
+div + h2 {
+	margin-top: 1em;
+}
+
 h3 {
 	@include adjust-font-size-to($r, 1);
 	margin: 0 0 0.5rem;
@@ -158,9 +162,11 @@ footer {
 	}
 	
 	.group tr:first-child, .summary { // tbody
+		font-size: em($m);
 	
 		td {
 			vertical-align: middle;
+			//font-weight: bold;
 		}
 		
 		th {
@@ -168,8 +174,12 @@ footer {
 		}
 	}
 	
-	.summary, .summary + .group { // tbody
+	.summary, .summary + .group, .summary ~ .group { // tbody
 		border-top: 1px solid $border-color;
+	}
+	
+	tbody:last-child.group tr {
+		font-size: em($r);
 	}
 	
 	.summary, .due {
@@ -179,6 +189,21 @@ footer {
 	.due { // tbody
 		background-color: $hightlight-color;
 		border-top: 3px double $border-color;
+	}
+	
+	.summary {
+		text-align: right;
+		
+		th {
+			vertical-align: middle;
+		}
+	}
+	
+	.summary .btn {
+		font-size: em($r);
+		line-height: 2;
+		padding: 0 1em;
+		margin-right: 1em;
 	}
 }
 
@@ -243,14 +268,18 @@ footer {
 	@extend .box;
 	padding-bottom: 1em;
 	text-align: center;
+	
+	+ .bottom-padded-box {
+		margin-top: 1em;
+	}
 }
 
 .payment {
 	text-align: center;
 	
 	a {
-		@extend .btn;
-		font-size: em($m);
+		@extend .btn-secondary;
+		font-size: em($r);
 		line-height: 2;
 		padding: 0 1em;
 		margin: 1em 0;
@@ -329,6 +358,10 @@ footer {
 		
 		& + div {
 			margin-top: 1em;
+		}
+		
+		p:last-child {
+			margin-bottom: 0;
 		}
 	}
 	

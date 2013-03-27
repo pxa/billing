@@ -78,14 +78,14 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 		
 		$rootScope.dueDate = '2013-04-11';
 		$rootScope.dueDateString = $filter('date')($rootScope.dueDate, 'MMMM d');
-		$rootScope.realTimeBalance = 745.09;
+		$rootScope.realTimeBalance = 1045.09;
 		$rootScope.newCharges = '550.00';
-		$rootScope.newPayments = '500.00';
+		$rootScope.newPayments = '200.00';
 		$rootScope.newActivity = '50.00';
-		$rootScope.amountDue = 195.09;
+		$rootScope.amountDue = 495.09;
 		$rootScope.adjustedBalance = 695.09;
-		$rootScope.originalDefermentAmount = 550;
-		$rootScope.recalculatedDefermentAmount = 250;
+		$rootScope.originalDefermentAmount = 250;
+		$rootScope.recalculatedDefermentAmount = 275;
 		$rootScope.defermentAmount = $rootScope.originalDefermentAmount;
 
 		$state.transitionTo('bill.status.summary');

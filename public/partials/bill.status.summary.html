@@ -1,4 +1,4 @@
-<h2>Summary</h2>
+<h2>Amount due</h2>
 <div class="bottom-padded-box">
 	<table class="activity">
 		<tbody>
@@ -10,17 +10,56 @@
 				<td class="money credit">375.00</td>
 				<th scope="row"><a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom">Anticipated Aid</a></th>
 			</tr>
+			<tr>
+				<td class="money credit">{{newPayments}}</td>
+				<th scope="row">New Payments</th>
+			</tr>
 		</tbody>
 		<tbody class="summary due">
 			<tr>
-				<td class="money debit">695.09</td>
-				<th scope="row">Adjusted balance<br/>due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+				<td><a href="#pay" class="btn">Pay $495.09</a></td>
+				<th scope="row">Balance due<br/>by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
 			</tr>
 		</tbody>
+	</table>
+</div>
+
+<h2>Account status</h2>
+<div class="bottom-padded-box">
+	<table class="activity">
 		<tbody>
 			<tr>
-				<td class="money debit">{{newCharges}}</td>
-				<th scope="row">New Charges</th>
+				<td class="money debit">1,070.09</td>
+				<th scope="row">Statement Balance</th>
+			</tr>
+			<tr>
+				<td class="money credit">375.00</td>
+				<th scope="row"><a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom">Anticipated Aid</a></th>
+			</tr>
+			<tr>
+				<td class="money debit">350.00</td>
+				<th scope="row">New Activity</th>
+			</tr>
+		</tbody>
+		<tbody class="summary due">
+			<tr>
+				<td><a href="#pay" class="btn">Pay $1,045.09</a></td>
+				<th scope="row">Real-time balance</th>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!--
+<div class="bottom-padded-box">
+	<table class="activity">
+		<tbody>
+			<tr>
+				<td class="money debit">1,070.09</td>
+				<th scope="row">Statement Balance</th>
+			</tr>
+			<tr>
+				<td class="money credit">375.00</td>
+				<th scope="row"><a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom">Anticipated Aid</a></th>
 			</tr>
 			<tr>
 				<td class="money credit">{{newPayments}}</td>
@@ -29,15 +68,27 @@
 		</tbody>
 		<tbody class="summary due">
 			<tr>
+				<td class="money debit">{{amountDue}}</td>
+				<th scope="row">Remaining balance<br/>due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td class="money debit">{{newCharges}}</td>
+				<th scope="row">New Charges</th>
+			</tr>
+		</tbody>
+		<tbody class="summary due">
+			<tr>
 				<td class="money debit">{{realTimeBalance}}</td>
-				<th scope="row">Real-Time Balance</th>
+				<th scope="row">Real-time balance</th>
 			</tr>
 		</tbody>
 	</table>
 </div>
-
+-->
 <div class="payment">
-	<a href="#payment" data-toggle="payment-options" data-hide="main">Payment Options</a>
+	<a href="#payment" data-toggle="payment-options" data-hide="main">More Payment Options</a>
 </div>
 
 <details class="faq">

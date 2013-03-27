@@ -5,6 +5,7 @@
 		<h2>Payment Options</h2>
 		<h3>Payment due {{dueDateString}}</h3>
 		
+		<!--
 		<div>
 			<h3>Pay amount due</h3>
 			<p>Pay the <strong>{{amountDue | currency}}</strong> amount due from the most recent statement. This amount includes personal payments since the statement date.</p>
@@ -18,7 +19,7 @@
 								<th scope="row">Adjusted Balance</th>
 							</tr>
 							<tr>
-								<td class="money credit">500.00</td>
+								<td class="money credit">{{newPayments}}</td>
 								<th scope="row">New Payments</th>
 							</tr>
 						</tbody>
@@ -66,7 +67,8 @@
 			</details>
 			<a href="#pay" class="btn">Pay {{realTimeBalance | currency}}</a>
 		</div>
-
+		-->
+		
 		<div>
 			<h3>Pay deferment amount</h3>
 			<p>For a fee, you may choose to pay the deferment amount. The remaining balance will be due on the next due date. Your account will remain in good standing.</p>
@@ -89,6 +91,11 @@
 			<a href="#pay" class="btn" ng-class="{ disabled: !payother }">Pay</a>
 		</div>
 	
+		<div>
+			<h3>Pay by mail</h3>
+			<p>Print <a href="#">current statement</a> and mail with check payment.</p>
+		</div>
+		
 	</div>
 	
 	<footer>
