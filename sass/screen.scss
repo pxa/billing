@@ -98,6 +98,15 @@ h2 {
 	margin: 0 0 1rem;
 }
 
+h2 + p {
+	@include border-radius;
+	background-color: $color-2;
+	font-size: em($s);
+	line-height: 1.4;
+	margin-bottom: 2rem;
+	padding: 1rem;
+}
+
 div + h2 {
 	margin-top: 1em;
 }
@@ -315,17 +324,16 @@ footer {
 	}
 	
 	label {
-		border-top: 1px solid $border-color;
 		display: block;
-		padding: 1em 0 1em 2em;
+		padding: 0 0 1em 2em;
 		text-indent: -2em;
-		
-		& + label {
-			border-width: 0;
-			padding-top: 0;
-		}
 	}
 	
+	p + label, label.separator {
+		border-top: 1px solid $border-color;
+		padding-top: 1em;
+	}
+		
 	h2 + h3, label + p {
 		@include border-radius;
 		background-color: $color-2;
@@ -484,6 +492,7 @@ time {
 	background-color: #fff;
 	border-top: 1px solid $border-color;
 	bottom: 0;
+	color: $color-6;
 	left: 0;
 	padding: 0.5em;
 	position: fixed;
@@ -492,5 +501,9 @@ time {
 	
 	&:hover {
 		opacity: 1;
+	}
+	
+	select {
+		margin-left: 0.5em;
 	}
 }

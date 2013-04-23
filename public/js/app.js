@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'billingApp.directives', 'ui.compat', 'ui.bootstrap'])
+angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'billingApp.directives', 'ui', 'ui.compat', 'ui.bootstrap'])
 
 	.config(['$stateProvider', '$routeProvider', '$urlRouterProvider', function($stateProvider, $routeProvider, $urlRouterProvider) {
 
@@ -84,9 +84,36 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 		$rootScope.newActivity = '50.00';
 		$rootScope.amountDue = 495.09;
 		$rootScope.adjustedBalance = 695.09;
-		$rootScope.originalDefermentAmount = 250;
-		$rootScope.recalculatedDefermentAmount = 275;
-		$rootScope.defermentAmount = $rootScope.originalDefermentAmount;
+		
+		var originalDeferment = {
+			amount: 250,
+			pay: 50, // 250 - 200
+		};
+		
+		var recalculatedDeferment = {
+			amount: 225,
+			pay: 225
+		};
+		
+		$rootScope.deferment = {
+			selectedAmount: originalDeferment.amount, // for radio selection
+			selection: originalDeferment, // to access object properties
+			original: originalDeferment,
+			recalculated: recalculatedDeferment
+		};
+		
+		//$rootScope.originalDefermentAmount = 250;
+		//$rootScope.adjustedOriginalDefermentAmount = 50; // 250 - 200
+		//$rootScope.recalculatedDefermentAmount = 225;
+		//$rootScope.defermentAmount = $rootScope.originalDefermentAmount;
+
+		$rootScope.useCases = {
+			selected: 1,
+			cases: [
+				{ label: 'Due < Real-time', value: 0 },
+				{ label: 'Due > Real-time', value: 1 }
+			]
+		};
 
 		$state.transitionTo('bill.status.summary');
 	}]);

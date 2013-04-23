@@ -73,14 +73,14 @@
 			<h3>Pay deferment amount</h3>
 			<p>For a fee, you may choose to pay the deferment amount. The remaining balance will be due on the next due date. Your account will remain in good standing.</p>
 			<p><a ng-href="{{config[campus]['defermentUrl']}}" target="_blank">Additional deferment option information</a></p>
-			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="{{originalDefermentAmount}}" /> <strong>{{originalDefermentAmount | currency}}</strong> Select statement deferment amount.</label>
-			<label><input type="radio" name="deferment" ng-model="defermentAmount" value="{{recalculatedDefermentAmount}}" /> <strong>{{recalculatedDefermentAmount | currency}}</strong> Select <a ng-show="false" href="#" data-tooltip-title="Recalculated deferment amount based on account activity since last statement.">recalculated deferment amount</a>
+			<label><input type="radio" name="deferment" ng-model="deferment.selectedAmount" value="{{deferment.original.amount}}" ng-change="deferment.selection = deferment.original" /> <strong>{{deferment.original.amount | currency}}</strong> Select statement deferment amount.</label>
+			<label><input type="radio" name="deferment" ng-model="deferment.selectedAmount" value="{{deferment.recalculated.amount}}" ng-change="deferment.selection = deferment.recalculated" /> <strong>{{deferment.recalculated.amount | currency}}</strong> Select <a ng-show="false" href="#" data-tooltip-title="Recalculated deferment amount based on account activity since last statement.">recalculated deferment amount</a>
 			<a tooltip="Updated deferment amount based on account activity since last statement." tooltip-placement="bottom">recalculated deferment amount</a>.
 			</label>
-			<p>Previous payments of <strong>{{newPayments | currency}}</strong> will be applied to your deferment amount.</p>
-			<label><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{defermentAmount | currency}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
-			<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{(defermentAmount - newPayments) | currency}}</strong> is due by <time>{{dueDateString}}</time>. Payment may be made electronically below or by mail.</p>
-			<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{(defermentAmount - newPayments) | currency}}</a>
+			<p ui-if="deferment.selectedAmount == deferment.original.amount">Previous payments of <strong>{{newPayments | currency}}</strong> will be applied to your deferment amount.</p>
+			<label class="separator"><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{deferment.selectedAmount | currency}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
+			<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{deferment.selection.pay | currency}}</strong> is due by <time>{{dueDateString}}</time>. Payment may be made electronically below or by mail.</p>
+			<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{deferment.selection.pay | currency}}</a>
 		</div>
 		
 		<div>
