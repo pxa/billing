@@ -108,10 +108,15 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 		//$rootScope.defermentAmount = $rootScope.originalDefermentAmount;
 
 		$rootScope.useCases = {
-			selected: 1,
+			selected: 6,
 			cases: [
 				{ label: 'Due < Real-time', value: 0 },
-				{ label: 'Due > Real-time', value: 1 }
+				{ label: 'Due > Real-time', value: 1 },
+				{ label: 'No deferment available', value: 2 },
+				{ label: 'Anticipated Aid not received', value: 3 },
+				{ label: 'Balance paid', value: 4 },
+				{ label: 'Nothing due', value: 5 },
+				{ label: 'All balances zero', value: 6 }
 			]
 		};
 

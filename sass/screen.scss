@@ -50,10 +50,6 @@ a {
 	text-decoration: underline;
 }
 
-[tooltip] {
-	cursor: help;
-}
-
 nav {
 	@extend %grid;
 	text-align: center;
@@ -98,7 +94,7 @@ h2 {
 	margin: 0 0 1rem;
 }
 
-h2 + p {
+h2 + p, .note {
 	@include border-radius;
 	background-color: $color-2;
 	font-size: em($s);
@@ -172,7 +168,7 @@ footer {
 	
 	.group tr:first-child, .summary { // tbody
 		font-size: em($m);
-	
+
 		td {
 			vertical-align: middle;
 			//font-weight: bold;
@@ -219,25 +215,21 @@ footer {
 .money {
 	font-family: monospace;
 	padding-left: 0.5em;
-	padding-right: 1.65em;
+	padding-right: 1rem;
 	text-align: right;
 }
 
 .credit {
 	$color: tint(green, 0%);
 	color: $color;
-	padding-right: 1em;
+	padding-right: 1rem;
 	
 	&:before, &:after {
 		color: tint($color, 60%);
 	}
 	
 	&:before {
-		content: '($';
-	}
-	
-	&:after {
-		content: ')';
+		content: '\2212$';
 	}
 }
 
@@ -248,21 +240,6 @@ footer {
 	&:before {
 		content: '$';
 		color: tint($color, 60%);
-	}
-}
-
-.altCurrency {
-	
-	.credit {
-		padding-right: 1.65em;
-		
-		&:before {
-			content: '\2212$';
-		}
-		
-		&:after {
-			content: none;
-		}
 	}
 }
 
@@ -291,11 +268,12 @@ footer {
 		font-size: em($r);
 		line-height: 2;
 		padding: 0 1em;
-		margin: 1em 0;
+		margin: 1em 0 0;
 	}
 }
 
 .faq { // details
+	margin-top: 1em;
 	
 	summary {
 		cursor: pointer;

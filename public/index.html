@@ -11,7 +11,7 @@
         
 	</head>
 
-	<body ng-class="{ altCurrency: altCurrencyStyle }">
+	<body>
 
 		<section ng-controller="BillingCtrl">
 		
@@ -31,10 +31,6 @@
 		</section>
 		
 		<div id="config">
-			<label>
-				<input type="checkbox" ng-model="altCurrencyStyle" />
-				<span class="money credit">100.00</span>
-			</label>
 			<label>
 				Use Cases
 				<select ng-model="useCases.selected" ng-options="c.value as c.label for c in useCases.cases"></select>
