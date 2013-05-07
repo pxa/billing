@@ -108,7 +108,7 @@ angular.module('billingApp', ['billingApp.filters', 'billingApp.services', 'bill
 		//$rootScope.defermentAmount = $rootScope.originalDefermentAmount;
 
 		$rootScope.useCases = {
-			selected: 6,
+			selected: 0,
 			cases: [
 				{ label: 'Due < Real-time', value: 0 },
 				{ label: 'Due > Real-time', value: 1 },
