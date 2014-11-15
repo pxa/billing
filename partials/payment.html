@@ -1,0 +1,119 @@
+<div class="payment-options">
+
+	<div class="container">
+	
+		<h2>Payment Options</h2>
+		<h3>Payment due {{dueDateString}}</h3>
+		
+		<!--
+		<div>
+			<h3>Pay amount due</h3>
+			<p>Pay the <strong>{{amountDue | currency}}</strong> amount due from the most recent statement. This amount includes personal payments since the statement date.</p>
+			<details class="faq">
+				<summary>How is this calculated?</summary>
+				<div>
+					<table class="activity">
+						<tbody>
+							<tr>
+								<td class="money debit">{{adjustedBalance}}</td>
+								<th scope="row">Adjusted Balance</th>
+							</tr>
+							<tr>
+								<td class="money credit">{{newPayments}}</td>
+								<th scope="row">New Payments</th>
+							</tr>
+						</tbody>
+						<tbody class="summary due">
+							<tr>
+								<td class="money debit">{{amountDue}}</td>
+								<th scope="row">Amount Due</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</details>
+			<a href="#pay" class="btn">Pay {{amountDue | currency}}</a>
+		</div>
+		
+		<div>
+			<h3>Pay real-time balance</h3>
+			<p>Pay the <strong>{{amountDue | currency}}</strong> amount due from the most recent statement and <strong>{{newCharges | currency}}</strong> in new charges.</p>
+			<details class="faq">
+				<summary>How is this calculated?</summary>
+				<div>
+					<table class="activity">
+						<tbody>
+							<tr>
+								<td class="money debit">{{adjustedBalance}}</td>
+								<th scope="row">Adjusted Balance</th>
+							</tr>
+							<tr>
+								<td class="money debit">{{newCharges}}</td>
+								<th scope="row">New Charges</th>
+							</tr>
+							<tr>
+								<td class="money credit">{{newPayments}}</td>
+								<th scope="row">New Payments</th>
+							</tr>
+						</tbody>
+						<tbody class="summary due">
+							<tr>
+								<td class="money debit">{{realTimeBalance}}</td>
+								<th scope="row">Real-Time Balance</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</details>
+			<a href="#pay" class="btn">Pay {{realTimeBalance | currency}}</a>
+		</div>
+		-->
+		
+		<div>
+			<h3>Pay deferment amount</h3>
+			<div ng-switch="useCases.selected">
+				<div ng-switch-when="2">
+					<p class="note">There is currently no deferment option available for your account. Please pay either either the statement balance or real-time balance shown on the <a href="#/status">summary page</a>.</p>
+				</div>
+				<div ng-switch-default>
+					<p>For a fee, you may choose to pay the deferment amount. The remaining balance will be due on the next due date. Your account will remain in good standing.</p>
+					<p><a ng-href="{{config[campus]['defermentUrl']}}" target="_blank">Additional deferment option information</a></p>
+					<label>
+						<input type="radio" name="deferment" ng-model="deferment.selectedAmount" value="{{deferment.original.amount}}" ng-change="deferment.selection = deferment.original" />
+						<strong>{{deferment.original.amount | currency}}</strong>
+						Select deferment amount.
+					</label>
+					<label>
+						<input type="radio" name="deferment" ng-model="deferment.selectedAmount" value="{{deferment.recalculated.amount}}" ng-change="deferment.selection = deferment.recalculated" />
+						<strong>{{deferment.recalculated.amount | currency}}</strong>
+						Select recalculated deferment amount.
+						<a tooltip="Updated deferment amount based on account activity since last statement." tooltip-placement="bottom" class="info">?</a>
+					</label>
+					<p ui-if="deferment.selectedAmount == deferment.original.amount">Previous payments of <strong>{{newPayments | currency}}</strong> will be applied to your deferment amount.</p>
+					<label class="separator"><input type="checkbox" ng-model="defer" /> Lock-in my deferment amount of <strong>{{deferment.selectedAmount | currency}}</strong>. I understand a <strong>$30 deferment fee</strong> will be charged on the next statement.</label>
+					<p ng-show="defer">In order to keep your account in good standing, your deferment payment of <strong>{{deferment.selection.pay | currency}}</strong> is due by <time>{{dueDateString}}</time>. Payment may be made electronically below or by mail.</p>
+					<a href="#pay" class="btn" ng-class="{ disabled: !defer }">Pay {{deferment.selection.pay | currency}}</a>
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<h3>Pay other amount</h3>
+			<p>Pay any amount, up to <strong>{{realTimeBalance | currency}}</strong>.</p>
+			<p>Please note, your account is subject to a late payment fee of <strong>1.5% per month</strong> if the full amount due is not received in the office by the due date or arrangements for deferment are made.</p>
+			<input type="text" class="money" placeholder="{{0 | currency}}" ng-model="payother" />
+			<a href="#pay" class="btn" ng-class="{ disabled: !payother }">Pay</a>
+		</div>
+	
+		<div>
+			<h3>Pay by mail</h3>
+			<p>Print <a href="#">current statement</a> and mail with check payment.</p>
+		</div>
+		
+	</div>
+	
+	<footer>
+		<a href="#/status" data-toggle="main" data-hide="payment-options">Back to summary</a>
+	</footer>
+	
+</div>

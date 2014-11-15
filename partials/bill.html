@@ -1,0 +1,10 @@
+<nav class="primary">
+	<a href="#/status" ng-class="{ active: $state.includes('bill.status') }">Current Status</a>
+	<a href="#/history" ng-class="{ active: $state.includes('bill.history') }">History</a>
+</nav>
+
+<div ui-view></div>
+
+<footer>
+	<a href="#manage-authorized-payers">Manage Authorized Payers</a>
+</footer>

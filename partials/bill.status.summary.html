@@ -1,0 +1,339 @@
+<div ng-switch="useCases.selected">
+
+	<!-- Due < Real-time balance -->
+	<div ng-switch-default>
+		<h2>Amount due</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">{{newPayments}}</td>
+						<th scope="row">New Payments <a tooltip="Personal payments credited to your account since the most recent statement." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $495.09</a></td>
+						<th scope="row">Balance due<br/>by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money debit">350.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $1,045.09</a></td>
+						<th scope="row">Real-time balance</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Anticipated Aid not received -->
+	<div ng-switch-when="3">
+		<h2>Amount due</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">{{newPayments}}</td>
+						<th scope="row">New Payments <a tooltip="Personal payments credited to your account since the most recent statement." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $495.09</a></td>
+						<th scope="row">Balance due<br/>by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money debit">200.00</td>
+						<th scope="row">Anticipated Aid not received</th>
+					</tr>
+					<tr>
+						<td class="money debit">350.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $1,245.09</a></td>
+						<th scope="row">Real-time balance</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- All balances zero -->
+	<div ng-switch-when="6">
+		<h2>Amount due</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money">0.00</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td class="money">$0.00</td>
+						<th scope="row">Nothing due</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money">0.00</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money">0.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td class="money">$0.00</td>
+						<th scope="row">Real-time balance</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Nothing due -->
+	<div ng-switch-when="5">
+		<h2>Amount due</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money">0.00</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td class="money">$0.00</td>
+						<th scope="row">Nothing due</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money">0.00</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money debit">350.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $350.00</a></td>
+						<th scope="row">Real-time balance</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Balance paid -->
+	<div ng-switch-when="4">
+		<h2>Amount due</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">695.09</td>
+						<th scope="row">New Payments <a tooltip="Personal payments credited to your account since the most recent statement." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td class="money">$0.00</td>
+						<th scope="row">Nothing due</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money debit">350.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $1,045.09</a></td>
+						<th scope="row">Real-time balance</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Due > Real-time balance -->
+	<div ng-switch-when="1">
+		<h2>Amount due</h2>
+		<p>Due to <a href="#/new-activity">New Activity</a> or anticipated aid, your balance has been significantly reduced. Please pay your real-time balance shown below by the due date.</p>
+		
+		<h2>Account status</h2>
+		<div class="bottom-padded-box">
+			<table class="activity">
+				<tbody>
+					<tr>
+						<td class="money debit">1,070.09</td>
+						<th scope="row"><a href="#statement">Statement Balance</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">375.00</td>
+						<th scope="row">Anticipated Aid <a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom" class="info">?</a></th>
+					</tr>
+					<tr>
+						<td class="money credit">350.00</td>
+						<th scope="row"><a href="#/new-activity">New Activity</a></th>
+					</tr>
+				</tbody>
+				<tbody class="summary due">
+					<tr>
+						<td><a href="#pay" class="btn">Pay $345.09</a></td>
+						<th scope="row">Real-time balance<br/>due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+<!--
+<div class="bottom-padded-box">
+	<table class="activity">
+		<tbody>
+			<tr>
+				<td class="money debit">1,070.09</td>
+				<th scope="row">Statement Balance</th>
+			</tr>
+			<tr>
+				<td class="money credit">375.00</td>
+				<th scope="row"><a tooltip="Your statement balance has been adjusted for anticipated aid. Anticipated aid is funding you are expected to receive. If this funding is not secured, you will be responsible for paying the remaining portion of the statement balance." tooltip-placement="bottom">Anticipated Aid</a></th>
+			</tr>
+			<tr>
+				<td class="money credit">{{newPayments}}</td>
+				<th scope="row">New Payments</th>
+			</tr>
+		</tbody>
+		<tbody class="summary due">
+			<tr>
+				<td class="money debit">{{amountDue}}</td>
+				<th scope="row">Remaining balance<br/>due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td class="money debit">{{newCharges}}</td>
+				<th scope="row">New Charges</th>
+			</tr>
+		</tbody>
+		<tbody class="summary due">
+			<tr>
+				<td class="money debit">{{realTimeBalance}}</td>
+				<th scope="row">Real-time balance</th>
+			</tr>
+		</tbody>
+	</table>
+</div>
+-->
+<div class="payment" ui-if="useCases.selected != 6">
+	<a href="#payment" data-toggle="payment-options" data-hide="main">More Payment Options</a>
+</div>
+
+<details class="faq">
+	<summary>What if my payment is late?</summary>
+	<div>
+		<p>If the amount due is not received by the due date, a late payment fee will be charged on the next statement.</p>
+		<p>The late payment fee is <strong>1.5% per month</strong> with a $2 minimum.</p>
+	</div>
+</details>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="billingApp">
+	<head>
+
+        <meta charset="utf-8">
+        <title ng-bind="title($state.current.data.title)">Billing</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width" />
+
+        <link rel="stylesheet" href="css/screen.css" />
+        
+	</head>
+
+	<body>
+
+		<section ng-controller="BillingCtrl">
+		
+			<header>
+				<h1>Billing</h1>
+				<label ng-show="!$state.includes('payment')">
+					Campus Account:
+					<select ng-model="campus">
+						<option value="BL">Bloomington</option>
+						<option value="IUPUI">IUPUI</option>
+					</select>
+				</label>
+			</header>
+		
+			<div ng-view></div>
+
+		</section>
+		
+		<div id="config">
+			<label>
+				Use Cases
+				<select ng-model="useCases.selected" ng-options="c.value as c.label for c in useCases.cases"></select>
+			</label>
+		</div>
+		
+		<!-- In production use:
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+		-->
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-ui.min.js"></script>
+		<script src="lib/angular-ui-states.min.js"></script>
+		<script src="lib/ui-bootstrap-0.2.0.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/directives.js"></script>
+	
+	</body>
+
+</html>

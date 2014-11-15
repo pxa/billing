@@ -1,0 +1,92 @@
+<summary>
+	<time datetime="2013-03-20">March 20<span ng-show="showYear">, 2013</span></time>
+	<span>
+		<b class="money debit">695.09</b>
+		<a href="#pdf">PDF</a>
+	</span>
+</summary>
+<div>
+	<table class="activity">
+		<tbody class="group">
+			<tr>
+				<td colspan="2" class="money debit">100.00</td>
+				<th scope="row">Previous Balance</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-11">Mar 11</time></td>
+				<td class="money debit">100.00</td>
+				<th scope="row">Anticipated Aid not received</th>
+			</tr>
+		</tbody>
+		<tbody class="group">
+			<tr>
+				<td colspan="2" class="money debit">3,120.09</td>
+				<th scope="rowgroup">Charges and Adjustments</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-02-21">Feb 21</time></td>
+				<td class="money debit">83.41</td>
+				<th scope="row">Activity Fee</th>
+			</tr>
+			<tr>
+				<td colspan="2" class="money debit">96.23</td>
+				<th scope="row">Technology Fee</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-02-26">Feb 26</time></td>
+				<td class="money debit">2,890.53</td>
+				<th scope="row">Resident Undergraduate Fees</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-12">Mar 12</time></td>
+				<td class="money credit">16.00</td>
+				<th scope="row">Collins Library Fines</th>
+			</tr>
+		</tbody>
+		<tbody class="group">
+			<tr>
+				<td colspan="2" class="money credit">2,250.00</td>
+				<th scope="rowgroup">Payments and Financial Aid</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-07">Mar 7</time></td>
+				<td class="money credit">500.00</td>
+				<th scope="row">Online Payment</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-08">Mar 8</time></td>
+				<td class="money credit">750.00</td>
+				<th scope="row">History Department Fellowship</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-03-15">Mar 15</time></td>
+				<td class="money credit">1,000.00</td>
+				<th scope="row">Payment</th>
+			</tr>
+		</tbody>
+		<tbody class="summary">
+			<tr>
+				<td colspan="2" class="money debit">1,070.09</td>
+				<th scope="row">Statement Balance</th>
+			</tr>
+
+		</tbody>
+		<tbody class="group">
+			<tr>
+				<td colspan="2" class="money credit">375.00</td>
+				<th scope="rowgroup">Anticipated Aid</th>
+			</tr>
+			<tr>
+				<td><time datetime="2013-04-10">Apr 10</time></td>
+				<td class="money credit">375.00</td>
+				<th scope="row">Collins LLC Retention Scholarship</th>
+			</tr>
+		</tbody>
+		<tbody class="summary due">
+			<tr>
+				<td colspan="2" class="money debit">695.09</td>
+				<th scope="row">Amount due by <time datetime="{{dueDate}}">{{dueDateString}}</time></th>
+			</tr>
+		</tbody>
+	</table>
+</div>
